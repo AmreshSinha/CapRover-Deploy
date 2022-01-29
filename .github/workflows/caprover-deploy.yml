@@ -39,5 +39,4 @@ jobs:
           echo $CONTAINER_FULL_IMAGE_NAME_WITH_TAG
           echo "Deploying on CapRover..."
           docker run caprover/cli-caprover:v2.1.1 caprover deploy --caproverUrl $CAPROVER_APP_URL --appToken $CAPROVER_APP_TOKEN --caproverApp $CAPROVER_APP --imageName $CONTAINER_FULL_IMAGE_NAME_WITH_TAG
-      - name: 
       - run: echo "🍏 This job's status is ${{ job.status }}."
