@@ -29,6 +29,7 @@ jobs:
           CAPROVER_APP_TOKEN: ${{ secrets.CAPROVER_APP_TOKEN }}
           SHA: ${{ steps.vars.outputs.sha_short }}
         run: |
+          echo $CAPROVER_URL $CAPROVER_APP $DOCKER_HUB_USER
           echo "Signing in to Docker..."
           docker login -u "$DOCKER_HUB_USER" -p "$DOCKER_HUB_TOKEN"
           echo "Building..."
@@ -38,6 +39,5 @@ jobs:
           docker push "$CONTAINER_FULL_IMAGE_NAME_WITH_TAG"
           echo $CONTAINER_FULL_IMAGE_NAME_WITH_TAG
           echo "Deploying on CapRover..."
-          echo $CAPROVER_URL $CAPROVER_APP $DOCKER_HUB_USER
           docker run caprover/cli-caprover:v2.2.3 caprover deploy --appToken $CAPROVER_APP_TOKEN --caproverUrl $CAPROVER_URL --imageName $CONTAINER_FULL_IMAGE_NAME_WITH_TAG --appName $CAPROVER_APP
       - run: echo "🍏 This job's status is ${{ job.status }}."
