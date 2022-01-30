@@ -20,7 +20,7 @@ jobs:
           CAPROVER_APP_TOKEN: ${{ secrets.CAPROVER_APP_TOKEN }}
           SHA: ${{ steps.vars.outputs.sha_short }}
         run: |
-          echo "Signing in to Docker..."
+          echo "Signing in to Docker Hub..."
           docker login -u "$DOCKER_HUB_USER" -p "$DOCKER_HUB_TOKEN"
           echo "Building..."
           export CONTAINER_FULL_IMAGE_NAME_WITH_TAG=$DOCKER_HUB_USER/my-build-image:$SHA
